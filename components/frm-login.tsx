@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 
 import { useState } from 'react';
+import Toast from "react-native-toast-message";
 
 export default function Login() {
 
@@ -13,6 +14,12 @@ export default function Login() {
     function onPress(){
         console.log('Usuário: ', usuario)
         console.log('Senha: ', senha)
+        
+        Toast.show({
+            type: "success",
+            text1: "Sucesso",
+            text2: "Login Efetuado!"
+        });
     }
 
     return (
@@ -33,8 +40,10 @@ export default function Login() {
             />
 
             <TouchableOpacity style={styles.button} onPress={onPress}>
-                <Text>Press Here</Text>
+                <Text>Login</Text>
             </TouchableOpacity>
+
+            <Toast />
 
         </View>
     )
@@ -44,6 +53,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        backgroundColor: '#fff',
     },
     baseText: {
         fontFamily: 'Cochin',
@@ -60,5 +70,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
         padding: 10,
+        margin: 12
     },
 });
