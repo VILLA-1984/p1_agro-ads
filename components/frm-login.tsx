@@ -5,21 +5,30 @@ import {
 
 import { useState } from 'react';
 import Toast from "react-native-toast-message";
+import { router } from "expo-router";
 
 export default function Login() {
 
     const [usuario, setUsuario] = useState('Jucaco');
     const [senha, setSenha] = useState('12345678');
 
-    function onPress(){
+    function onPress() {
         console.log('Usuário: ', usuario)
         console.log('Senha: ', senha)
-        
-        Toast.show({
-            type: "success",
-            text1: "Sucesso",
-            text2: "Login Efetuado!"
-        });
+        if (usuario === 'Jucaco' && senha === '12345678') {
+            Toast.show({
+                type: "success",
+                text1: "Sucesso",
+                text2: "Login Efetuado!"
+            });
+            router.replace('/(tabs)');
+        }else{
+            Toast.show({
+                type: "error",
+                text1: "Falha",
+                text2: "Login Não Efetuado!"
+            });
+        }
     }
 
     return (
