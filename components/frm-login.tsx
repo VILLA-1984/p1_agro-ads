@@ -10,6 +10,11 @@ export default function Login() {
     const [usuario, setUsuario] = useState('Jucaco');
     const [senha, setSenha] = useState('12345678');
 
+    function onPress(){
+        console.log('Usuário: ', usuario)
+        console.log('Senha: ', senha)
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.baseText}></Text>
