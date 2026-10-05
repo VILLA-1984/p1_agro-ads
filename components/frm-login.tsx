@@ -1,33 +1,30 @@
 import {
-    View, Text, TextInput, TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Text, TextInput, TouchableOpacity,
+    View
 } from 'react-native';
 
+import { auth } from "@/firebase";
+import { router } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 import Toast from "react-native-toast-message";
-import { router } from "expo-router";
 
 export default function Login() {
 
-    const [usuario, setUsuario] = useState('Jucaco');
-    const [senha, setSenha] = useState('12345678');
+    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('');
 
-    function onPress() {
-        console.log('Usuário: ', usuario)
-        console.log('Senha: ', senha)
-        if (usuario === 'Jucaco' && senha === '12345678') {
-            Toast.show({
-                type: "success",
-                text1: "Sucesso",
-                text2: "Login Efetuado!"
-            });
-            router.replace('/(tabs)');
-        }else{
+    async function onPress() {
+        try{
+            await signInWithEmailAndPassword(auth, usuario, senha);
+            router.replace("/(tabs)/aluno");
+        }catch(error: any){
             Toast.show({
                 type: "error",
-                text1: "Falha",
-                text2: "Login Não Efetuado!"
-            });
+                text1: 'Erro!',
+                text2: 'Usuário ou Senha inválidos!'
+            })
         }
     }
 
