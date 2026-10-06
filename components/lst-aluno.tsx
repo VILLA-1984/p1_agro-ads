@@ -1,14 +1,14 @@
 import {
-    View, Text, TouchableOpacity, FlatList, StyleSheet
+    StyleSheet,
+    Text, TouchableOpacity,
+    View
 } from 'react-native';
 
-import { useFocusRefresh } from "@/hooks/use-focus-refresh";
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
-import Toast from "react-native-toast-message";
-import { router } from "expo-router";
 import { db } from "@/firebase";
 import { addDoc, collection } from 'firebase/firestore';
+import Toast from "react-native-toast-message";
 
 export default function CadAluno() {
 
