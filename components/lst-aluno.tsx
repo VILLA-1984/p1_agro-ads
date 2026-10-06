@@ -50,9 +50,11 @@ const LstAlunos = () => {
         keyExtractor={item => item.id}
         renderItem={({item}) => (
             <View>
-                <Text style={styles.item}>{item.nome}</Text>
-                <Text style={styles.item}>Idade: {item.idade}</Text>
-                <Text style={styles.item}>Matrícula: {item.matricula}</Text>
+                <Text style={styles.item}>
+                  Nome: {item.nome}
+                  Idade: {item.idade}
+                  Matrícula: {item.matricula}
+                </Text>
             </View>
         )}
       />
